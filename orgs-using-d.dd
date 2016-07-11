@@ -128,6 +128,9 @@ $(DIVC orgs-using-d center,
     )
     $(DORG Tamedia Digital, http://tamediadigital.ch/?lang=en, tamedia_digital.png,
          Largest Swiss media company,
+         $(FA_QUOTE
+             Apart from being a super productive language, D is also a great hiring filter!
+         )
          $(FA_GITHUB tamediadigital)
     )
     $(DORG Tripaneer.com, https://www.tripaneer.com, tripaneer.png,
