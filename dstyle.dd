@@ -223,7 +223,7 @@ $(H3 Properties)
         particular, getters and setters should generally be avoided in favor of
         property functions. And in general, whereas functions should be verbs,
         properties should be nouns, just like if they were member variables.
-        Getter properties should $(I not) alter state.)
+        Getter properties should $(I not) alter state, i.e. they should be `const`, `inout` or `immutable`)
 
 $(H3 Documentation)
 
@@ -314,7 +314,7 @@ b += 1;
 short c = cast(short) a;
 filter!(a => a == 42);
 -------------------------------
-    $(LI Put no space between unary operators, after `assert`, function calls:)
+    $(LI Put no space between unary operators, after `assert`, and function calls:)
 -------------------------------
 a = !a && !(2 == -1);
 bool b = ~a;
