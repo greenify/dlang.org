@@ -1,0 +1,16 @@
+language: d
+sudo: false
+d:
+  - dmd
+cache:
+ - directories:
+     - $HOME/.make
+script:
+ - mkdir -p $HOME/.make && cd $HOME/.make && curl -L http://ftp.gnu.org/gnu/make/make-4.2.tar.gz  | tar -zxf - --strip-components=1
+ - ./configure > /dev/null 2>&1
+ - make -j2 > /dev/null 2>&1
+ - export PATH=${HOME}/.make:${PATH:-}
+ - ./make -v
+ - cd ${TRAVIS_BUILD_DIR}
+ - make -v
+ - make -f posix.mak all
