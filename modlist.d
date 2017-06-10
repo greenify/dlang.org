@@ -125,7 +125,7 @@ int main(string[] args)
     Tree tree;
     foreach (dir; dirs)
     {
-        dir.writeln;
+        stderr.writeln(dir);
         // search for common root folders (fallback to the root directory)
         ["source", "src", ""]
             .map!(f => buildPath(dir, f))
