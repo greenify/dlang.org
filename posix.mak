@@ -55,10 +55,6 @@ PHOBOS_STABLE_DIR_GENERATED=$(GENERATED)/phobos-release
 # - a temporary folder with a copy of Phobos needs to be generated
 # - a list of all files in Phobos and the temporary copy is needed to setup proper
 #   Makefile dependencies and rules
-$(shell [ ! -d $(PHOBOS_DIR) ] && git clone --depth=1 ${GIT_HOME}/phobos $(PHOBOS_DIR))
-$(shell [ ! -d $(PHOBOS_STABLE_DIR) ] && git clone -b v${LATEST} --depth=1 ${GIT_HOME}/phobos $(PHOBOS_STABLE_DIR))
-$(mkdir -p $(PHOBOS_DIR_GENERATED))
-$(mkdir -p $(PHOBOS_STABLE_DIR_GENERATED))
 PHOBOS_FILES := $(shell find $(PHOBOS_DIR) -name '*.d' -o -name '*.mak' -o -name '*.ddoc')
 PHOBOS_FILES_GENERATED := $(subst $(PHOBOS_DIR), $(PHOBOS_DIR_GENERATED), $(PHOBOS_FILES))
 $(shell [ ! -d $(PHOBOS_DIR) ] && git clone --depth=1 ${GIT_HOME}/phobos $(PHOBOS_DIR))
@@ -600,10 +596,7 @@ $(ASSERT_WRITELN_BIN): assert_writeln_magic.d $(DUB)
 	$(DUB) build --single --compiler=$(STABLE_DMD) $<
 	@mv ./assert_writeln_magic $@
 
-$(PHOBOS_DIR_GENERATED):
-	@mkdir -p $@
-
-$(PHOBOS_DIR_STABLE_GENERATED):
+$(PHOBOS_DIR_GENERATED) $(PHOBOS_DIR_STABLE_GENERATED):
 	@mkdir -p $@
 
 $(PHOBOS_FILES_GENERATED): $(PHOBOS_DIR_GENERATED)/%: $(PHOBOS_DIR)/% $(DUB) $(ASSERT_WRITELN_BIN) | $(PHOBOS_DIR_GENERATED)

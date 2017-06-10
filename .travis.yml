@@ -13,4 +13,5 @@ script:
  - ./make -v
  - cd ${TRAVIS_BUILD_DIR}
  - make -v
- - make -f posix.mak all
+ - make -f posix.mak phobos-release
+ - make -f posix.mak all -j10
