@@ -254,7 +254,7 @@ ${GENERATED}/modlist-${LATEST}.ddoc : modlist.d ${STABLE_DMD} $(DRUNTIME_STABLE_
 	$(STABLE_RDMD) -g modlist.d $(DRUNTIME_STABLE_DIR) $(PHOBOS_STABLE_DIR) $(DMD_STABLE_DIR) $(MOD_EXCLUDES_RELEASE) \
 		$(addprefix --dump , object std etc core ddmd) >$@
 
-${GENERATED}/modlist-prerelease.ddoc : modlist.d ${STABLE_DMD} $(DRUNTIME_DIR) $(PHOBOS_DIR)
+${GENERATED}/modlist-prerelease.ddoc : modlist.d ${DMD_DIR} $(DRUNTIME_DIR) $(PHOBOS_DIR)
 	mkdir -p $(dir $@)
 	$(STABLE_RDMD) -g modlist.d $(DRUNTIME_DIR) $(PHOBOS_DIR) $(DMD_DIR) $(MOD_EXCLUDES_PRERELEASE) \
 		$(addprefix --dump , object std etc core ddmd) >$@
@@ -398,12 +398,12 @@ ${DMD_DIR} ${DRUNTIME_DIR} ${PHOBOS_DIR} ${TOOLS_DIR} ${INSTALLER_DIR}:
 # dmd compiler, latest released build and current build
 ################################################################################
 
-$(DMD) : ${DMD_DIR} $(DRUNTIME_DIR)
+$(DMD) : | ${DMD_DIR} $(DRUNTIME_DIR)
 	${MAKE} --directory=${DMD_DIR}/src -f posix.mak AUTO_BOOTSTRAP=1
 	${MAKE} --directory=${DRUNTIME_DIR} -f posix.mak
 	${MAKE} --directory=${PHOBOS_DIR} -f posix.mak
 
-$(DMD_STABLE) : ${DMD_STABLE_DIR}
+$(DMD_STABLE) : | ${DMD_STABLE_DIR}
 	${MAKE} --directory=${DMD_STABLE_DIR}/src -f posix.mak AUTO_BOOTSTRAP=1
 
 dmd-release : $(STD_DDOC) $(DMD_STABLE_DIR) $(DMD_STABLE)
