@@ -11,7 +11,7 @@ $(SCRIPT jQuery(document).ready(listanchors);)
 LAYOUT_TITLE=$(H1 $(D $(TITLE)))
 _=
 
-LREF = <a href="#$1">$(D $1)</a>
+LREF = <a href="#.$1">$(D $1)</a>
 _=
 
 _=Override PHOBOS_PATH to use relative paths in Phobos module and symbol links
