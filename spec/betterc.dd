@@ -51,6 +51,8 @@ $(OL
     $(LI `unittest` (testing can be as usual with the `-betterC` flag))
 )
 
+The exact behavior of the `-betterC` switch is documented at the $(LINK2 $(ROOT_DIR)dmd.html#switch-betterC, compiler manual).
+
 $(SPEC_SUBNAV_PREV simd, Vector Extensions)
 
 )
