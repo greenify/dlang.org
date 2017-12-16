@@ -28,8 +28,6 @@ defined.)
 
     $(P But even though the order of evaluation is well defined, writing code that
         depends on it is rarely recommended.
-        $(B Note that dmd currently does not comply with left to right evaluation of
-        function arguments and AssignExpression.)
     )
 
 $(H2 $(LEGACY_LNAME2 Expression, expression, Expressions))
